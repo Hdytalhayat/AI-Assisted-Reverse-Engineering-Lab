@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+"plugins": [
+    "@dietrichgebert/ponytail"
+  ],"mcp": {
+    "rea": {
+      "type": "local",
+      "command": ["npx", "--no-install", "rea-agents", "mcp"], "environment": {
+        "GHIDRA_INSTALL_DIR": "C:\\Tools\\ghidra",
+        "JAVA_HOME": "C:\\Program Files\\Amazon Corretto\\jdk25.0.5_1"
+      }
+    }
+  },
+
+  "model": "llamacpp/qwen3.8:27b-128k",
+  "providers": {
+    "llamacpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Llama.cpp",
+      "options": {
+        "apiKey": "no-key-required",
+        "baseURL": "https://ungotten-larae-grinningly.ngrok-free.dev/v1",
+        "headers": {
+          "ngrok-skip-browser-warning": "true"
+        },
+        "timeout": 1200000
+      },
+      "models": {
+        "qwen3.8:27b-128k": {
+          "name": "Qwen 3.8 27B (128K)",
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
+      }
+    }
+  }
+}
